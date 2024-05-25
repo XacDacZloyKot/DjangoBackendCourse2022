@@ -1,4 +1,4 @@
-#!D:\Desktop\Python\Project\Course Django Backend from scratch to Specialist 2022\store-server\venv\Scripts\python.exe
+#!D:\Desktop\Python\Project\DjangoBackendCourse2022\store-server\venv\Scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
