@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+db.sqlite3
+
+# If using SQLite3
+*.sqlite3
+
+# Local environment settings
+.venv
+
+# Django stuff:
+*.log
+
+# pytest
+.cache/
+
+# Pycharm
+.idea/
+
+# VS Code
+.vscode/
+
+.pylintrc
