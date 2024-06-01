@@ -1,4 +1,3 @@
-from msilib.schema import ODBCAttribute
 from django.db import models
 
 from users.models import User
@@ -12,8 +11,8 @@ class ProductCategory(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "Категория"
-        verbose_name_plural = "Категории"
+        verbose_name = "категория"
+        verbose_name_plural = "категории"
 
 
 class Product(models.Model):
@@ -30,8 +29,8 @@ class Product(models.Model):
         return f"Продукт:{self.name} | Категория: {self.category}"
 
     class Meta:
-        verbose_name = "Продукты"
-        verbose_name_plural = "Продукты"
+        verbose_name = "продукты"
+        verbose_name_plural = "продукты"
 
 
 class BasketQuerySet(models.QuerySet):
@@ -43,10 +42,10 @@ class BasketQuerySet(models.QuerySet):
 
 
 class Basket(models.Model):
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
-    quantity = models.PositiveSmallIntegerField(default=0)
-    create_timestamp = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name='Пользователь')
+    product = models.ForeignKey(to=Product, on_delete=models.CASCADE, verbose_name='Продукт')
+    quantity = models.PositiveSmallIntegerField(default=0, verbose_name='Кол-во')
+    create_timestamp = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
 
     objects = BasketQuerySet.as_manager()
 
@@ -55,3 +54,7 @@ class Basket(models.Model):
 
     def sum(self):
         return self.product.price * self.quantity
+
+    class Meta:
+        verbose_name = "корзина"
+        verbose_name_plural = "корзины пользователей"
