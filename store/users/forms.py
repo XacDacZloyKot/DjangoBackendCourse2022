@@ -4,7 +4,6 @@ from django.contrib.auth.forms import (
     UserChangeForm,
 )
 from django import forms
-from pkg_resources import require
 
 from users.models import User
 

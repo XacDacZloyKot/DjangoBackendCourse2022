@@ -4,8 +4,8 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
-from products.models import Basket
 from users.models import User
+from products.models import Basket
 
 
 def login(request):
@@ -38,6 +38,7 @@ def registration(request):
     context = {"form": form}
     return render(request, template_name="users/register.html", context=context)
 
+
 @login_required
 def profile(request):
     if request.method == "GET":
@@ -48,7 +49,6 @@ def profile(request):
             instance=request.user, data=request.POST, files=request.FILES
         )
         if form.is_valid():
-            print("Сохраняем")
             form.save()
             return HttpResponseRedirect(redirect_to=reverse("users:profile"))
         else:
