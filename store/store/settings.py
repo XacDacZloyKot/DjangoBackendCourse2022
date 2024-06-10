@@ -26,6 +26,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+DOMAIN_NAME = 'http://localhost:8000'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,7 +42,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware', 
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -62,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'products.context_processors.baskets'
             ],
         },
     },
@@ -113,17 +116,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-# Link as a link in the browser
-STATIC_URL = '/static/'
-# Link as file path
-STATICFILES_DIRS = (
+STATIC_URL = '/static/'  # Link as a link in the browser
+STATICFILES_DIRS = (  # Link as file path
     BASE_DIR / 'static',
 )
 
-# Link as a link in the browser
-MEDIA_URL = '/media/'
-# Link as file path
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'  # Link as a link in the browser
+MEDIA_ROOT = BASE_DIR / 'media'  # Link as file path
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -131,6 +130,19 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Users
-AUTH_USER_MODEL = 'users.User'
-# URL for login(decorator 'login_required')
-LOGIN_URL = '/users/login/'
+AUTH_USER_MODEL = 'users.User'  # Base user model
+
+LOGIN_URL = '/users/login/'  # URL for login(decorator 'login_required')
+
+LOGIN_REDIRECT_URL = 'index'  # URL for login and logout (CBV)
+LOGOUT_REDIRECT_URL = 'index'  # URL for login and logout (CBV)
+
+# Sending emails
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = "smtp.yandex.ru"
+EMAIL_PORT = 465
+DEFAULT_FROM_EMAIL = 'stoor-server@yandex.ru'
+EMAIL_HOST_USER = 'stoor-server@yandex.ru'
+EMAIL_HOST_PASSWORD = 'vqrichtfitbrpkww'
+EMAIL_USE_SSL = True
+
