@@ -9,22 +9,18 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.sqlite3
 db.sqlite3
 
 # If using SQLite3
 *.sqlite3
 
 # Local environment settings
-.venv/
-
-# Django stuff:
-*.log
+venv/
 
 # pytest
 .cache/
 
-# Pycharm
+# PyCharm
 .idea/
 
 # VS Code
