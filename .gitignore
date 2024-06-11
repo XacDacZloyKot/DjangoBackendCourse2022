@@ -16,7 +16,7 @@ db.sqlite3
 *.sqlite3
 
 # Local environment settings
-.venv
+.venv/
 
 # Django stuff:
 *.log
