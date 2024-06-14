@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
+from django.core.cache import cache
 
 from common.views import TitleMixin
 from products.models import Product, ProductCategory, Basket
@@ -9,7 +10,7 @@ from products.models import Product, ProductCategory, Basket
 
 class IndexView(TitleMixin, TemplateView):
     template_name = "products/index.html"
-    title = 'Store'
+    title = "Store"
 
 
 class ProductsListView(TitleMixin, ListView):
@@ -20,7 +21,12 @@ class ProductsListView(TitleMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
-        context["categories"] = ProductCategory.objects.all()
+        categories = cache.get("categories")
+        if not categories:
+            context["categories"] = ProductCategory.objects.all()
+            cache.set("categories", context["categories"], 30)
+        else:
+            context["categories"] = categories
         return context
 
     def get_queryset(self):
