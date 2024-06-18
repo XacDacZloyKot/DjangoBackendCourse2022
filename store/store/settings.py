@@ -167,14 +167,13 @@ LOGIN_REDIRECT_URL = "index"  # URL for login and logout (CBV)
 LOGOUT_REDIRECT_URL = "index"  # URL for login and logout (CBV)
 
 # Sending emails
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = "smtp.yandex.ru"
-# EMAIL_PORT = 465
-# DEFAULT_FROM_EMAIL = 'stoor-server@yandex.ru'
-# EMAIL_HOST_USER = 'stoor-server@yandex.ru'
-# EMAIL_HOST_PASSWORD = 'vqrichtfitbrpkww'
-# EMAIL_USE_SSL = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = "smtp.yandex.ru"
+EMAIL_PORT = 465
+DEFAULT_FROM_EMAIL = 'stoor-server@yandex.ru'
+EMAIL_HOST_USER = 'stoor-server@yandex.ru'
+EMAIL_HOST_PASSWORD = 'vqrichtfitbrpkww'
+EMAIL_USE_SSL = True
 
 
 # OAuth
@@ -194,3 +193,8 @@ SOCIALACCOUNT_PROVIDERS = {
         ],
     }
 }
+
+# Celery
+
+CELERY_BROKER_URL = "redis://127.0.0.1:6379"
+CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379"
