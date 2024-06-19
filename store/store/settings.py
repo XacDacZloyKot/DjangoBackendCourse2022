@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    'django.contrib.humanize',
+
     "django.contrib.sites",
     "allauth",
     "allauth.account",
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.github",
 
     "products.apps.ProductsConfig",
+    "orders.apps.OrdersConfig",
     "users.apps.UsersConfig",
 
     "debug_toolbar",
