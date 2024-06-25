@@ -14,6 +14,7 @@ class ProductAdmin(admin.ModelAdmin):
         ("price", "quantity"),
         "image",
         "category",
+        "stripe_product_price_id",
     )  # Поля самого товара
     readonly_fields = ("description",)  # Поля только для чтения
     search_fields = ("name", "price")  # По чему можем искать
